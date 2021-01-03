@@ -3,6 +3,7 @@ package com.SambuIn.factory;
 import javafx.scene.layout.Background;
 
 import javax.swing.*;
+import javax.swing.border.LineBorder;
 import java.awt.*;
 
 public class ComponentFactory {
@@ -36,8 +37,7 @@ public class ComponentFactory {
         JLabel jLabel = new JLabel(text);
         jLabel.setBounds(x,y,width,height);
         jLabel.setOpaque(true);
-        jLabel.setForeground(Color.WHITE);
-        jLabel.setBackground(Color.BLACK);
+        jLabel.setBorder(new LineBorder(Color.BLACK,1));
         return jLabel;
     }
 
