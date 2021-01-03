@@ -10,8 +10,7 @@ public class DriverManager {
     }
 
     public ArrayList<Driver> createDriverList(){
-        DriverManager driverManager = new DriverManager();
-        return driverManager.getDrivers();
+        return getDrivers();
     }
 
     public ArrayList<Driver> getDrivers(){

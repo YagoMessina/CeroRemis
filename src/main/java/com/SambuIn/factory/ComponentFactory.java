@@ -40,4 +40,10 @@ public class ComponentFactory {
         jLabel.setBackground(Color.BLACK);
         return jLabel;
     }
+
+    public JTextField createTextField(String text, int x, int y, int width, int height){
+        JTextField jTextField = new JTextField(text);
+        jTextField.setBounds(x,y,width,height);
+        return jTextField;
+    }
 }
