@@ -46,4 +46,14 @@ public class ComponentFactory {
         jTextField.setBounds(x,y,width,height);
         return jTextField;
     }
+
+    public JMenu createMenu(String text){
+        return new JMenu(text);
+    }
+
+    public JMenuItem createMenuItem(String actionCommand, String text){
+        JMenuItem jMenuItem = new JMenuItem(text);
+        jMenuItem.setActionCommand(actionCommand);
+        return jMenuItem;
+    }
 }

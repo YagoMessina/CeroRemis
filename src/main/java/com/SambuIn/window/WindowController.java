@@ -2,18 +2,16 @@ package com.SambuIn.window;
 
 import com.SambuIn.entity.Driver;
 import com.SambuIn.manager.DriverManager;
-import com.SambuIn.window.Window;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.SQLOutput;
 
 public class WindowController implements ActionListener {
 
-    private Window window;
+    private MainWindow window;
     DriverManager driverManager;
-    public WindowController(Window window) {
+    public WindowController(MainWindow window) {
         this.window = window;
         this.window.addListeners(this);
         driverManager = new DriverManager();
@@ -52,7 +50,6 @@ public class WindowController implements ActionListener {
                             System.out.println("Comisión: " + ((nKm*nPricePerKm)*nCommission)/100);
                         }
                     }
-
                 }
                 break;
             case "select":
@@ -62,9 +59,12 @@ public class WindowController implements ActionListener {
                     if(driver != null){
                         window.jName.setText(" " + driver.getName() + " " + driver.getSurname());
                     }else{
-                        JOptionPane.showMessageDialog(null, "No se encuentra el chofer");
+                        showMessage("No se encuentra el chofer");
                     }
                 }
+                break;
+            case "addDriver":
+                DriverWindow driverWindow = new DriverWindow();
                 break;
         }
     }

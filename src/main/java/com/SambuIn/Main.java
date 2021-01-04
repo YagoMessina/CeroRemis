@@ -1,6 +1,6 @@
 package com.SambuIn;
 
-import com.SambuIn.window.Window;
+import com.SambuIn.window.MainWindow;
 import com.SambuIn.window.WindowController;
 
 import javax.swing.*;
@@ -13,7 +13,7 @@ public class Main {
         } catch (ClassNotFoundException | UnsupportedLookAndFeelException | IllegalAccessException | InstantiationException e) {
             e.printStackTrace();
         }
-        Window window = new Window();
+        MainWindow window = new MainWindow();
         WindowController windowController = new WindowController(window);
     }
 }

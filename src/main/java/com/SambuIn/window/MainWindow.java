@@ -4,9 +4,10 @@ import com.SambuIn.factory.ComponentFactory;
 import com.SambuIn.manager.DriverManager;
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Window extends JFrame {
+public class MainWindow extends JFrame {
 
     private final String TITLE = "Cero Remis";
     private final int WIDTH = 485;
@@ -21,6 +22,12 @@ public class Window extends JFrame {
     JTextField jCommission = null;
     JTextField jPricePerKM = null;
 
+    JMenuBar jMenuBar = null;
+    JMenu jMenuFile = null;
+    JMenu jMenuDriver = null;
+    JMenuItem jMenuItemFile = null;
+    JMenuItem jMenuItemDriverAdd = null;
+
     JLabel jHeaderKM = null;
     JLabel jHeaderID = null;
     JLabel jHeaderName = null;
@@ -30,21 +37,28 @@ public class Window extends JFrame {
     DriverManager driverManager = new DriverManager();
     Integer[] driversID = driverManager.createDriverIDList().toArray(new Integer[0]);
 
-    public Window() {
+    public MainWindow() {
         setTitle(TITLE);
         setSize(WIDTH,HEIGHT);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         createComponent();
         add(jPanel);
+
+        setJMenuBar(jMenuBar);
+        addMenu(jMenuFile, jMenuDriver);
+        addMenuItem();
+
         addComponent(jButton, jComboBox, jName, jKM, jCommission, jPricePerKM, jHeaderID, jHeaderName,
                 jHeaderKM, jHeaderComission, jHeaderPricePerKM);
+
         setVisible(true);
     }
 
     public void addListeners(ActionListener actionListener) {
         jComboBox.addActionListener(actionListener);
         jButton.addActionListener(actionListener);
+        jMenuItemDriverAdd.addActionListener(actionListener);
     }
 
     private void createComponent() {
@@ -63,11 +77,28 @@ public class Window extends JFrame {
         jPricePerKM = cf.createTextField("2",BORDER*4+200,BORDER*5,65,30);
         jCommission = cf.createTextField("25",BORDER*5+265,BORDER*5,65,30);
         jButton = cf.createButton("add", "Agregar",BORDER*6+330,BORDER*5,100,30);
+
+        jMenuBar = new JMenuBar();
+        jMenuFile = cf.createMenu("Archivo");
+        jMenuDriver = cf.createMenu("Chofer");
+        jMenuItemFile = cf.createMenuItem("", "hola");
+        jMenuItemDriverAdd = cf.createMenuItem("addDriver", "Agregar");
     }
 
     private void addComponent(JComponent... arg) {
         for (JComponent jComponent : arg) {
             jPanel.add(jComponent);
         }
+    }
+
+    private void addMenu(JMenu... arg) {
+        for(JMenu jMenu : arg){
+            jMenuBar.add(jMenu);
+        }
+    }
+
+    private void addMenuItem() {
+        jMenuFile.add(jMenuItemFile);
+        jMenuDriver.add(jMenuItemDriverAdd);
     }
 }
